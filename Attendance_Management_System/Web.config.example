@@ -1,0 +1,8 @@
+﻿<?xml version="1.0"?>
+<configuration>
+  <connectionStrings>
+    <add name="StudentAttendanceConnection"
+         connectionString="Data Source= DESKTOP-QVAD37R\SQLEXPRESS;Initial Catalog=Student9;Integrated Security=True;TrustServerCertificate=True"
+         providerName="System.Data.SqlClient" />
+  </connectionStrings>
+</configuration>

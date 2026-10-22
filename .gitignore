@@ -1,0 +1,32 @@
+
+# Visual Studio local files
+.vs/
+*.user
+*.suo
+
+# Build files
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+
+# Test results
+TestResults/
+
+# Local-only configuration
+Web.config.local
+# Backup archives
+*.zip
+
+# Local database files
+*.mdf
+*.ldf
+
+
+# Visual Studio project-specific settings
+*.csproj.user
+
+# Local database configuration
+Attendance_Management_System/Web.config
+# NuGet packages restored locally
+packages/
