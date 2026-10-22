@@ -10,42 +10,117 @@ Before running the project, the following software should be installed on your s
 - SQL Server Management Studio (SSMS)
 - Git, along with basic knowledge of Git commands for managing version control and pushing the project to a GitHub repository
 
+
 ## 2. Setup Instructions
 
-1. Open Visual Studio Community to start the project.
-2. Create a new project using the ASP.NET Web Application (.NET Framework) template and select Web Forms as the project type.
-3. Name the project appropriately and click Create so that the project opens.
-4. Create the required pages (`.aspx`) and their corresponding backend C# files (`.aspx.cs`) using clear and understandable names.
-5. Open SSMS and create the required tables for the application, then add the student data that will be used later for retrieval from the database.
-6. Configure the database connection string in the application's `Web.config` file. This allows the application to connect to the appropriate SQL Server instance and database.
-7. After completing each page or making code changes, select Build → Build Solution from the Visual Studio menu bar to check for compilation errors and ensure the project builds successfully.
-8. Set the web application as the startup project so it can be run from Visual Studio.
-9. After completing the setup, run the application using the Start button or press F5 to verify that it works as expected.
+Follow these steps to download the project, configure the required software, and run the application on your local system.
 
-## 3. Database Configuration
+### Step 1: Clone the Repository
 
-The application uses Microsoft SQL Server to store student details, department information, user accounts, and attendance records.
+Make sure Git is installed on your system. Open PowerShell or Command Prompt and check the installation:
 
-1. Open SQL Server Management Studio and connect to your SQL Server instance.
-2. Create the database required by the application.
-3. Execute the database creation and table creation queries used by the project.
-4. Open the application's `Web.config` file and update the connection string with your SQL Server instance name and database name.
-5. Save the changes and verify that the application can connect to the database.
+```bash
+git --version
+```
+
+Copy the repository's HTTPS URL from GitHub using **Code → HTTPS**, then run:
+
+```bash
+git clone <YOUR_REPOSITORY_URL>
+```
+
+Replace `<YOUR_REPOSITORY_URL>` with your repository's HTTPS URL.
+
+Navigate to the downloaded project folder:
+
+```bash
+cd <PROJECT_FOLDER>
+```
+
+Replace `<PROJECT_FOLDER>` with the name of the cloned folder.
+
+Alternatively, select **Code → Download ZIP** on GitHub and extract the downloaded file.
+
+### Step 2: Open the Project in Visual Studio
+
+1. Open Visual Studio 2022.
+2. Select **Open a project or solution**.
+3. Browse to the downloaded project folder.
+4. Open the solution file (`.slnx`).
+5. Wait for Visual Studio to load the project.
+
+### Step 3: Restore the Required Packages
+
+1. Open the solution in Visual Studio.
+2. Right-click the solution in Solution Explorer.
+3. Select **Restore NuGet Packages**, if available.
+4. Wait for the restoration to complete. Packages may also be restored automatically during the build.
+
+### Step 4: Configure the SQL Server Database
+
+The application uses SQL Server to store and retrieve data.
+
+1. Open SQL Server Management Studio (SSMS).
+2. Connect to your SQL Server instance.
+3. Locate the SQL scripts provided in the repository.
+4. Open and execute the scripts in the required order to create the database, tables, and initial data.
+5. Verify that the required database objects and records have been created successfully.
+
+**SQL Script Files:**
+
+- `<Required_tables_creation.sql>` — Creates the required tables, if provided separately.
+- `<Students_insertion.sql>` — Inserts initial or sample data, if provided separately.
+
+### Step 5: Configure the Database Connection String
+
+The application uses a connection string in `Web.config` to connect to SQL Server.
+
+1. Locate the application's `Web.config` file.
+2. Find the `<connectionStrings>` section.
+3. Update the server name and database name according to your local SQL Server configuration.
+4. Save the changes.
 
 Example connection string using Windows Authentication:
 
-```config
-Server=SERVER_NAME;Database=DATABASE_NAME;Integrated Security=True;TrustServerCertificate=True;
+```xml
+<connectionStrings>
+    <add name="StudentAttendanceConnection"
+         connectionString="Server=YOUR_SERVER_NAME;Database=YOUR_DATABASE_NAME;Integrated Security=True;TrustServerCertificate=True;"
+         providerName="System.Data.SqlClient" />
+</connectionStrings>
 ```
 
-Replace `SERVER_NAME` and `DATABASE_NAME` with the values configured on your system.
+Replace `YOUR_SERVER_NAME` and `YOUR_DATABASE_NAME` with your actual values.
 
-## 4. Steps to Run the Application
+**Important:** The connection string name must match the name referenced in the application's C# code. If the repository contains a `Web.config.example` instead of `Web.config`, use it as a reference to create your local configuration file. Do not publish machine-specific connection details or credentials.
 
-1. Open the project solution in Visual Studio Community.
-2. Make sure SQL Server is running and the database connection string is correct.
-3. Build the solution using Build → Build Solution.
-4. Set the web application project as the startup project.
-5. Press F5 or click Start in Visual Studio.
-6. The application will open in the browser using the Visual Studio development server.
-7. Log in using the appropriate account configured for the application.
+### Step 6: Build the Solution
+
+1. In Visual Studio, select **Build → Build Solution** from the menu bar.
+2. Wait for the build to finish.
+3. Check the **Error List** window for compilation errors.
+4. Resolve any errors before proceeding.
+
+### Step 7: Set the Startup Project
+
+1. In Solution Explorer, right-click the ASP.NET Web Forms project.
+2. Select **Set as Startup Project**.
+
+### Step 8: Run the Application
+
+1. Ensure SQL Server is running and the database is configured correctly.
+2. Click **Start** in Visual Studio or press **F5**.
+3. The application should open in your default browser using Visual Studio's development server.
+4. Log in using an account configured for the application.
+
+If the application fails to run, check the Error List, Output window, and database connection settings.
+
+### Step 9: Verify the Setup
+
+After launching the application, verify that:
+
+- The login page loads successfully.
+- The application connects to the database.
+- Student and department data can be retrieved.
+- The available pages and functionality work as expected.
+
