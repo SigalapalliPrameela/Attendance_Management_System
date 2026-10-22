@@ -67,7 +67,7 @@ The application uses SQL Server to store and retrieve data.
 5. Verify that the required database objects and records have been created successfully.
 
 **SQL Script Files:**
-
+In Sql_Code folder , you will find following files :
 - `<Required_tables_creation.sql>` — Creates the required tables, if provided separately.
 - `<Students_insertion.sql>` — Inserts initial or sample data, if provided separately.
 
