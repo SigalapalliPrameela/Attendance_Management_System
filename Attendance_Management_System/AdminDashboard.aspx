@@ -126,12 +126,12 @@
             margin-top: 24px;
             padding: 10px 20px;
             background-color: #ffffff;
-            border: 1px solid #cbd5e1;
+            border: 2px solid #cbd5e1;
             border-radius: 6px;
             color: #34465a;
             font-family: inherit;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 900;
             cursor: pointer;
             transition: background-color 0.2s, border-color 0.2s;
         }

@@ -27,7 +27,7 @@ namespace Attendance_Management_System
             if(!IsPostBack && AdminExists())
             {
                 btnCreateAdmin.Enabled = false;
-                lblResult.Text = "an Admin account already exists . Setup is disables";
+                lblResult.Text = "an Admin account already exists . Setup is disabled";
             }
         }
         private bool AdminExists()

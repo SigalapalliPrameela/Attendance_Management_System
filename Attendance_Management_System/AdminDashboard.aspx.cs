@@ -46,7 +46,7 @@ namespace Attendance_Management_System
                 lblDate.Text = DateTime.Now.ToString("dd MMMM yyyy");
                 lblRole.Text = "Your Role : Admin";
 
-                lblStatus.Text = "Teacher approval and attendance management modules will be added next";
+                //lblStatus.Text = "Teacher approval and attendance management modules will be added next";
 
             }
         }

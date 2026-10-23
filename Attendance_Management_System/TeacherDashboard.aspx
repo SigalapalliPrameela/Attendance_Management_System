@@ -164,14 +164,14 @@
 
         .logout-button {
             min-width: 110px;
-            padding: 10px 18px;
+            padding: 12px 18px;
             background-color: #ffffff;
-            border: 1px solid #cbd5df;
-            border-radius: 6px;
+            border: 2px solid #cbd5df;
+            border-radius: 8px;
             color: #34465a;
             font-family: inherit;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 900;
             cursor: pointer;
             transition: background-color 0.2s, border-color 0.2s;
         }

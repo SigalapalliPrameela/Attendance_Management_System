@@ -42,7 +42,7 @@ namespace Attendance_Management_System
             {
                 string fullName = Convert.ToString(Session["FullName"]);
 
-                lblWelcome.Text = "welcome, " + fullName + "!";
+                lblWelcome.Text = "Welcome, " + fullName + "!";
 
                 lblDate.Text = "Date:" + DateTime.Now.ToString("dd MMMM yyyy");
                 lblRole.Text = "Your role: Teacher";
