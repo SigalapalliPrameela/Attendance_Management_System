@@ -509,15 +509,15 @@ The exact status messages and available actions depend on the current implementa
 
 After completing the setup, verify the following:
 
-- [ ] The application builds without errors.
-- [ ] The database connection works correctly.
-- [ ] The login page opens successfully.
-- [ ] The initial Admin account can log in.
-- [ ] The Admin dashboard opens after login.
-- [ ] Teacher registration works.
-- [ ] Admin can approve or reject teacher registrations.
-- [ ] Teacher access follows the approval status.
-- [ ] Unauthorized users cannot access protected pages.
+-  The application builds without errors.
+-  The database connection works correctly.
+-  The login page opens successfully.
+-  The initial Admin account can log in.
+-  The Admin dashboard opens after login.
+-  Teacher registration works.
+-  Admin can approve or reject teacher registrations.
+-  Teacher access follows the approval status.
+-  Unauthorized users cannot access protected pages.
 
 ---
 
