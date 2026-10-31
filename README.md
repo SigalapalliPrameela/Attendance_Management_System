@@ -62,8 +62,7 @@ Before setting up the application, make sure the following software is installed
 | Software | Purpose |
 |---|---|
 | Visual Studio 2022 | To open, build, and run the ASP.NET Web Forms application |
-| .NET Framework 4.7.2 | Target framework required by the application (Ensure that the required targeting or developer pack is installed if Visual Studio cannot build the project.
-)|
+| .NET Framework 4.7.2 | Target framework required by the application (Ensure that the required targeting or developer pack is installed if Visual Studio cannot build the project.)|
 | Microsoft SQL Server | To store the application data |
 | SQL Server Management Studio (SSMS) | To view and manage the SQL Server database |
 | Git | To clone the project repository |
