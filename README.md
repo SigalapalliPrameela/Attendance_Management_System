@@ -4,7 +4,7 @@ A web-based application developed using **ASP.NET Web Forms, C#, .NET Framework 
 
 The application supports role-based access for administrators and teachers. The Admin manages the system and teacher registration requests, while approved teachers can access the attendance-related functionality permitted by their roles.
 
-This README provides instructions for downloading the project, configuring the database, creating the initial Admin account, running the application, and troubleshooting common setup problems.
+This README provides instructions for downloading the project, configuring the database, creating the initial Admin account, running the application.
 
 ---
 
@@ -51,117 +51,42 @@ The application includes the following functionality:
 - Session-based tracking of authenticated users.
 - An initial Admin setup mechanism.
 
-> **Note:** The exact functionality available to each role depends on the implementation in the source code.
 
 ---
+---
 
-## 3. Technology Stack
+## 3.Prerequisites
 
-| Technology | Purpose |
+Before setting up the application, make sure the following software is installed on your system.
+
+| Software | Purpose |
 |---|---|
-| ASP.NET Web Forms | Builds the web interface. |
-| C# | Implements application logic and event handling. |
-| .NET Framework 4.7.2 | Provides the application runtime and framework libraries. |
-| Microsoft SQL Server | Stores application data. |
-| SQL Server Management Studio (SSMS) | Creates, queries, and manages the database. |
-| Visual Studio 2022 | Opens, builds, debugs, and runs the project. |
-| Git and GitHub | Manage and host the source code. |
+| Visual Studio 2022 | To open, build, and run the ASP.NET Web Forms application |
+| .NET Framework 4.7.2 | Target framework required by the application (Ensure that the required targeting or developer pack is installed if Visual Studio cannot build the project.
+)|
+| Microsoft SQL Server | To store the application data |
+| SQL Server Management Studio (SSMS) | To view and manage the SQL Server database |
+| Git | To clone the project repository |
 
----
+### Required Visual Studio Components
 
-## 4. Application Workflow
+While installing Visual Studio 2022, make sure that the required ASP.NET and .NET Framework development components are available.
 
-### 4.1 Initial Admin Setup
+### Before You Begin
 
-When the application is installed on a new machine, its database might not contain an Admin account.
-
-The initial Admin must therefore be created before Admin-specific features can be used.
-
-The project includes an `AdminSetUp.aspx` page intended for this initial setup.
-
-The setup process is:
-
-1. Configure the database.
-2. Configure the application's database connection string.
-3. Run the application locally.
-4. Open the Admin setup page.
-5. Enter the required Admin details.
-6. Create the initial Admin account.
-7. Navigate to the login page and sign in.
-
-The setup page checks whether an Admin already exists and restricts the setup operation to local requests. Follow the instructions in Section 12 before attempting to create the initial Admin.
-
-### 4.2 Teacher Registration and Approval
-
-The teacher workflow is:
-
-1. A teacher opens the sign-up page.
-2. The teacher enters the required registration details.
-3. The application records the registration request.
-4. The teacher waits for the Admin to review the request.
-5. The Admin approves or rejects the registration.
-6. An approved teacher can log in using valid credentials.
-7. A teacher whose registration is pending or rejected cannot access protected teacher functionality.
-
-The application should enforce these restrictions on the server, not merely hide buttons or display messages in the interface.
-
-### 4.3 Login and Role-Based Access
-
-After successful authentication, the application maintains session information for the logged-in user.
-
-The user's role determines which protected pages and operations they are authorized to access.
-
-For example, a Teacher must not be able to access an Admin-only page simply by entering its URL in the browser.
-
----
-
-## 5. Prerequisites
-
-Install the following software before setting up the project.
-
-### Required Software
-
-**1. Visual Studio 2022**
-
-Install Visual Studio with the appropriate ASP.NET and web development support.
-
-Ensure that the required .NET Framework development components are available.
-
-**2. .NET Framework 4.7.2**
-
-The application targets .NET Framework 4.7.2.
-
-Ensure that the required targeting or developer pack is installed if Visual Studio cannot build the project.
-
-**3. Microsoft SQL Server**
-
-Install and configure a SQL Server instance.
-
-The project needs a database in which its tables and application data can be stored.
-
-**4. SQL Server Management Studio (SSMS)**
-
-Use SSMS to connect to SQL Server, execute the supplied SQL scripts, and verify database objects.
-
-**5. Git (optional if downloading the ZIP)**
-
-Git is required if you intend to clone the repository using the command line.
-
-Alternatively, you can download the repository as a ZIP file from GitHub.
-
-### Before Proceeding
-
-Make sure that:
+Verify the following:
 
 - SQL Server is installed and running.
-- You know the name of your SQL Server instance.
-- You can connect to that instance using SSMS.
-- You have permission to create or use the application database.
-- The project files are available locally.
+- You can connect to your SQL Server instance using SSMS.
+- You have permission to create or modify the application database.
+- Visual Studio supports .NET Framework 4.7.2.
+- Git is installed if you plan to clone the repository using Git.
+
+> **Note:** The project uses Entity Framework 6 Code First Migrations to create and manage the database schema. Therefore, the database tables do not need to be created manually using SSMS.
 
 ---
 
-## 6. Clone the Repository
+## 4. Clone the Repository
 
 You can obtain the project using either Git or GitHub's ZIP download option.
 
@@ -181,14 +106,14 @@ If Git is installed, the command displays its version.
 
 Open the project's GitHub repository and select:
 
-`Code → HTTPS → Copy URL`
+`Code(Green Button) → HTTPS → Copy URL`
 
 **Step 3: Clone the repository.**
 
 Run the following command, replacing the placeholder with the copied repository URL:
 
 ```bash
-git clone <YOUR_REPOSITORY_URL>
+git clone <COPIED_REPOSITORY_URL>
 ```
 
 For example, the command format is:
@@ -196,8 +121,6 @@ For example, the command format is:
 ```bash
 git clone https://github.com/USERNAME/REPOSITORY.git
 ```
-
-The example above is a placeholder format. Use the actual URL of this project.
 
 **Step 4: Enter the cloned folder.**
 
@@ -219,7 +142,7 @@ Replace the placeholder with the folder name created by Git.
 
 ---
 
-## 7. Open the Project in Visual Studio
+## 5. Open the Project in Visual Studio
 
 1. Launch Visual Studio 2022.
 2. Select **Open a project or solution**.
@@ -228,7 +151,7 @@ Replace the placeholder with the folder name created by Git.
 5. Open the solution.
 6. Wait for Visual Studio to load the project and its dependencies.
 
-If Visual Studio reports that a required framework or development component is missing, install the required component before continuing.
+If Visual Studio reports that a required framework or development component is missing, install the required component before continuing using Visual Studio Installer.
 
 ### Locate the Web Application Project
 
@@ -242,98 +165,55 @@ Examples include:
 - `AdminSetUp.aspx`
 - `Web.config`
 
-The exact contents of the project depend on the repository version.
+---
+### Build the Project
+
+After opening the solution:
+
+1. From the Visual Studio menu, select **Build → Build Solution**.
+2. Make sure the build completes successfully before continuing with the database configuration.
+
+> **Note:** If any NuGet packages are missing, restore them before building the project.
 
 ---
 
-## 8. Configure the Database
+## 6. Configure the Database Connection
 
-The application uses Microsoft SQL Server to store and retrieve data.
+The application uses **Microsoft SQL Server** as its database.
 
-The repository contains a `Sql_Code` folder for database scripts.
+Before creating the database tables, update the connection string in the `Web.config` file according to your SQL Server instance.
 
-### Step 1: Open SSMS
+### Step 1: Open `Web.config`
 
-1. Launch SQL Server Management Studio.
-2. Connect to your SQL Server instance.
-3. Select the appropriate authentication method.
-4. Verify that the connection succeeds.
+In Visual Studio, open the `Web.config` file located in the project.
 
-### Step 2: Locate the SQL Scripts
-
-Open the `Sql_Code` folder in the cloned repository.
-
-The following filenames were documented for this project:
-
-- `Required_tables_creation.sql`
-- `Students_insertion.sql`
-
-Check the actual contents of the folder because the scripts available in the current repository determine the exact setup procedure.
-
-### Step 3: Execute the Scripts
-
-1. Open the relevant SQL script in SSMS.
-2. Review the database name and other configuration statements.
-3. Confirm that the script targets the intended database.
-4. Execute the scripts in the order required by their contents.
-5. Review the Messages and Results tabs for errors.
-
-The table-creation script should be executed before a data-insertion script that depends on those tables.
-
-If a separate database-creation script exists, execute it first.
-
-**Important:** Do not assume that executing a table-creation script automatically creates the database. Check the script to determine whether it creates the database itself or expects an existing database.
-
-### Step 4: Verify the Database
-
-In SSMS:
-
-1. Expand the Databases node.
-2. Locate the database used by the application.
-3. Expand its Tables node.
-4. Verify that the required tables exist.
-5. Check that the expected initial student and department data are present, if the supplied scripts include that data.
-
-If the scripts use a database name different from the one in your connection string, reconcile the names before running the application.
-
----
-
-## 9. Configure the Connection String
-
-The application connects to SQL Server using a connection string in `Web.config`.
-
-The connection string name expected by the application is:
-
-`StudentAttendanceConnection`
-
-### Step 1: Locate Web.config
-
-Find the `Web.config` file belonging to the ASP.NET Web Forms application project.
-
-Do not confuse it with a configuration file belonging to another project or folder.
-
-### Step 2: Update the Connection String
-
-A connection string using Windows Authentication has the following format:
+Find the following section:
 
 ```xml
 <connectionStrings>
-    <add name="StudentAttendanceConnection"
-         connectionString="Server=YOUR_SERVER_NAME;Database=YOUR_DATABASE_NAME;Integrated Security=True;TrustServerCertificate=True;"
-         providerName="System.Data.SqlClient" />
+  <add name="StudentAttendanceConnection"
+       connectionString="Data Source=YOUR_SERVER_INSTANCE;Initial Catalog=YOUR_DATABASE_NAME;Integrated Security=True;TrustServerCertificate=True"
+       providerName="System.Data.SqlClient" />
 </connectionStrings>
 ```
 
-Replace:
+### Step 2: Update the SQL Server Instance Name
 
-- `YOUR_SERVER_NAME` with your actual SQL Server instance name.
-- `YOUR_DATABASE_NAME` with the actual application database name.
+Replace `YOUR_SERVER_INSTANCE` and `YOUR_DATABASE_NAME` with the SQL Server instance name  and Database Name on your system.
 
-For example, a named SQL Server Express instance may use a server name in the format:
+For example:
 
-`YOUR_COMPUTER_NAME\SQLEXPRESS`
+```text
+Data Source=DESKTOP_NAME\SQLEXPRESS
+```
 
-This is only an example. Use the server or instance name that works in your own SSMS connection.
+You can find your SQL Server instance name when connecting to SQL Server through **SQL Server Management Studio (SSMS)** at the left panel where you will see a Object Explorer and Database name by finding which database you are intended to use.
+
+### Important
+
+- Keep the connection string name as `StudentAttendanceConnection`.
+- The project uses **Windows Authentication** through `Integrated Security=True`.
+- Do not use another developer's server name directly. Each developer should use their own SQL Server instance name.
 
 ### Step 3: Understand the Connection String
 
@@ -352,101 +232,106 @@ When using Windows Authentication, the Windows identity under which the applicat
 - The connection string name must remain `StudentAttendanceConnection` unless the corresponding C# code is updated.
 - Use the correct database name and SQL Server instance.
 - Do not create a second `<connectionStrings>` section if one already exists.
-- If the repository provides a `Web.config.example` rather than a complete local `Web.config`, use the example as a reference and create the required local configuration.
+- The repository provides a `Web.config.example` rather than a complete local `Web.config`, use the example as a reference and create the required local configuration.
 - Do not commit personal machine configuration, passwords, or other secrets to GitHub.
 
 ---
 
-## 10. Restore Packages and Build the Project
-
-### Step 1: Restore NuGet Packages
-
-In Visual Studio:
-
-1. Open the solution.
-2. If available, right-click the solution in Solution Explorer.
-3. Select **Restore NuGet Packages**.
-4. Wait for package restoration to complete.
-
-Depending on the project's configuration, packages may also be restored automatically during the build.
-
-If package restoration fails, verify your internet connection, NuGet configuration, and the package sources required by the project.
-
-### Step 2: Build the Solution
-
-1. Select **Build → Build Solution**.
-2. Wait for the build to finish.
-3. Open the Error List window.
-4. Resolve any build errors before proceeding.
-
-Warnings and errors are different. Review the details rather than assuming every warning prevents the application from running.
-
-### Step 3: Set the Startup Project
-
-In Solution Explorer:
-
-1. Locate the ASP.NET Web Forms project.
-2. Right-click it.
-3. Select **Set as Startup Project**, if it is not already the startup project.
-
 ---
 
-## 11. Run the Application
+## 7. Create the Database Using Entity Framework Migrations
 
-1. Ensure that SQL Server is running.
-2. Confirm that the database and connection string are configured correctly.
-3. Ensure that the solution builds successfully.
-4. Set the ASP.NET Web Forms project as the startup project.
-5. Click **Start** in Visual Studio or press `F5`.
-6. Wait for the application to open in your browser.
+The database schema for this project is managed using **Entity Framework 6 Code First Migrations**.
+If Entity Framework package is not installed then **GoTo Tools → Nuget Package Manager → Manage Nuget Package for Solution → Then Browse "EntityFramework"(make sure that it is EF6 not EFCore)**
 
-Visual Studio normally runs the application using its configured development web server.
+The project already contains the model classes, `AttendanceDbContext`, and migration files required to create the database tables.
 
-The first page displayed depends on the project's startup configuration.
+### Step 1: Open the Package Manager Console
 
-If the application opens the login page, proceed to the initial Admin setup instructions below if no Admin account exists.
+In Visual Studio, go to:
 
-**Do not assume that a new database already contains an Admin account.** Follow Section 12 to initialize the application.
+**Tools → NuGet Package Manager → Package Manager Console**
 
----
+### Step 2: Select the Correct Project
 
-## 12. Create the Initial Admin Account
+Make sure the **Default Project** in the Package Manager Console is set to the Attendance Management System project.
 
-This step is required when the configured database does not already contain an Admin account.
+### Step 3: Create or Update the Database
 
-The project includes an `AdminSetUp.aspx` page for initial Admin creation.
+Run the following command:
 
-### Step 1: Run the Application Locally
+```powershell
+Update-Database
+```
+### Expected Output
 
-Start the application from Visual Studio using `F5`.
+After running the command successfully, you will see output similar to:
 
-The initial Admin setup operation is restricted to local requests in the application, so perform this step while running the application locally.
+```text
+PM> Update-Database
+Applying explicit migrations...
+Running Seed method.
+```
 
-### Step 2: Open the Admin Setup Page
+This indicates that Entity Framework has successfully applied the migrations and executed the Seed method.
 
-Navigate to the Admin setup page using the application's local base URL.
+Entity Framework will use the existing migrations in the project to create the database schema.
 
-For example, if the application is running at:
+The following tables will be created:
 
-`https://localhost:PORT/`
+- `Users`
+- `Departments`
+- `Students`
+- `Attendance`
 
-the setup page would typically be reached at:
+### Verify the Database
 
-`https://localhost:PORT/AdminSetUp.aspx`
+After the command completes successfully:
 
-Replace `PORT` with the actual port displayed in your browser.
+1. Open **SQL Server Management Studio (SSMS)**.
+2. Connect to your SQL Server instance.
+3. Locate  `Your_Database` database.
+4. Expand **Tables** to verify that the application tables were created successfully.
 
-If the application uses a virtual directory or a different URL structure, adjust the path accordingly.
+> **Important:** Do not manually create these tables using SQL scripts. The database schema is managed through Entity Framework Code First Migrations.
 
-### Step 3: Create the Admin
+## 8. Verify Sample Data
 
-1. Open the setup page.
+The project already includes sample data in the database configuration. When you run:
+
+```powershell
+Update-Database
+```
+Expand:
+
+```text
+Databases
+└── StudentAttendanceDB
+    └── Tables
+```
+You will see the Data in Students and Departments Tables.
+
+## 9. Run the Application and Set Up the Admin Account
+
+After completing the database setup, run the application in Visual Studio.
+
+1. Open the project in **Visual Studio**.
+2. Right-Click On AdminSetUp.aspx and Select **Set As Start Page**
+3. Press **`Ctrl + F5`** or click **Start** to run the application.
+4. The application will open in your web browser.
+
+### Set Up the Default Admin Account
+
+The application requires one default Admin account.
+
+1. Navigate to the **Admin Setup** page.
 2. Enter the required Admin details.
-3. Provide the PIN or other credentials requested by the form.
-4. Submit the form.
-5. Confirm that the application reports successful creation.
+3. Create the Admin account.
 
-Use credentials that you can remember and keep them private.
+
+> **Note:** The Admin Setup page is intended for initial setup only. Once an Admin account has been created, additional Admin accounts cannot be created through this page.So keep the pin and credentials private and make sure you remember them.
+
+After creating the Admin account, you can log in using the Admin credentials and access the Admin Dashboard.
 
 ### Step 4: Sign In
 
@@ -466,7 +351,7 @@ Use credentials that you can remember and keep them private.
 
 ---
 
-## 13. Register and Approve Teachers
+## 10. Register and Approve Teachers
 
 Once the initial Admin account has been created, the teacher registration workflow can be tested.
 
@@ -501,11 +386,37 @@ For an approved teacher:
 
 For a pending or rejected teacher, verify that the application denies access as intended.
 
-The exact status messages and available actions depend on the current implementation.
-
+After completing these steps, the application is ready to use.
 ---
+### Navigation Flow
 
-## 14. Verify the Installation
+The basic application flow is:
+
+```text
+Admin Setup
+    ↓
+Admin Login
+    ↓
+Admin Dashboard
+    ↓
+Review and Approve Teachers
+
+Teacher Signup
+    ↓
+Pending Approval
+    ↓
+Admin Approval
+    ↓
+Teacher Login
+    ↓
+Teacher Dashboard
+    ↓
+View Students
+    ↓
+Mark Attendance
+```
+
+## 11. Verify the Installation
 
 After completing the setup, verify the following:
 
