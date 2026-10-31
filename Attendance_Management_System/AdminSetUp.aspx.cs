@@ -180,9 +180,11 @@ namespace Attendance_Management_System
                                     return;
                                 }
                             }
-                            string insertSql = @"Insert into Users(FullName , Email , Username, PinHash , Role , ApprovalStatus) values (@FullName , @Email , @Username, @PinHash , @Role , @ApprovalStatus);";
-
-                            using(SqlCommand insertCommand = new SqlCommand(insertSql , connection , transaction))
+                            string insertSql = @"INSERT INTO Users
+                                                (FullName, Email, UserName, PinHash, Role, ApprovalStatus, CreatedAt)
+                                                VALUES
+                                                (@FullName, @Email, @Username, @PinHash, @Role, @ApprovalStatus, @CreatedAt);";
+                            using (SqlCommand insertCommand = new SqlCommand(insertSql , connection , transaction))
                             {
                                 insertCommand.Parameters.AddWithValue("@FullName", fullName);
                                 insertCommand.Parameters.AddWithValue("@Email", email);
@@ -190,6 +192,7 @@ namespace Attendance_Management_System
                                 insertCommand.Parameters.AddWithValue("@PinHash", pinHash);
                                 insertCommand.Parameters.AddWithValue("@Role", "Admin");
                                 insertCommand.Parameters.AddWithValue("@ApprovalStatus", "Approved");
+                                insertCommand.Parameters.AddWithValue("@CreatedAt", DateTime.UtcNow);
                                 insertCommand.ExecuteNonQuery();
                             }
 

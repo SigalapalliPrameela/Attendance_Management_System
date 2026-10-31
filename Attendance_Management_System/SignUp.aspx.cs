@@ -162,7 +162,7 @@ namespace Attendance_Management_System
                             ShowMessage(
                                 "Registration successful! Your account is " +
                                 "pending Admin approval. You can log in " +
-                                "after your account is approved.");
+                                "after your account is approved." , true);
 
                             // Clear the form after successful registration.
                             txtFullName.Text = "";
@@ -225,9 +225,17 @@ namespace Attendance_Management_System
 
         }
 
-        private void ShowMessage(string message)
+        private void ShowMessage(string message , bool isSuccess=false)
         {
             lblResult.Text = message;
+            if (isSuccess)
+            {
+                lblResult.ForeColor = System.Drawing.Color.DarkGreen;
+            }
+            else
+            {
+                lblResult.ForeColor = System.Drawing.Color.Red;
+            }
         }
     }
 }

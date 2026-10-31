@@ -47,7 +47,7 @@ namespace Attendance_Management_System
                 lblDate.Text = "Date:" + DateTime.Now.ToString("dd MMMM yyyy");
                 lblRole.Text = "Your role: Teacher";
 
-                lblStatus.Text = "You can manage attendance after you account has been approved by the Admin";
+                lblStatus.Text = "Your account has been approved by the Admin , You can manage attendance ";
             }
         }
 
