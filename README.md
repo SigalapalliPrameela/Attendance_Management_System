@@ -183,7 +183,12 @@ The application uses **Microsoft SQL Server** as its database.
 Before creating the database tables, update the connection string in the `Web.config` file according to your SQL Server instance.
 
 ### Step 1: Open `Web.config`
+This repository includes a Web.config.example file that provides an example of the database connection configuration.
+Locate the Web.config.example file in the project.
 
+Open the file and review the connection string configuration.
+
+Create or update your Web.config file using the example as a reference.
 In Visual Studio, open the `Web.config` file located in the project.
 
 Find the following section:
