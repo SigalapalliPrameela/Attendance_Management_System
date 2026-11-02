@@ -141,9 +141,9 @@ namespace Attendance_Management_System
             }
             catch(Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex);
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
 
-                lblResult.Text = "Login could not be completed, Please try again";
+                lblResult.Text = "Login could not be completed, Please try again"+ex.Message;
 
             }
         }
