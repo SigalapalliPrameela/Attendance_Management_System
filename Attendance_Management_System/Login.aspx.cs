@@ -143,7 +143,7 @@ namespace Attendance_Management_System
             {
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
 
-                lblResult.Text = "Login could not be completed, Please try again"+ex.Message;
+                lblResult.Text = "Login could not be completed, Please try again";
 
             }
         }

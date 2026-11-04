@@ -189,7 +189,7 @@ namespace Attendance_Management_System
                 else
                 {
                     System.Diagnostics.Debug.WriteLine(ex);
-                    ShowMessage("A database error occured , Please try again.");
+                    ShowMessage("A  error occured , Please try again.");
                 }
             }
 
