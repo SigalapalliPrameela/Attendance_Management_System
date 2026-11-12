@@ -26,7 +26,7 @@ namespace Attendance_Management_System.Models
         public DateTime CreatedAt { get; set; }
 
         [ForeignKey("StudentId")]
-        public virtual Student Student { get; set; }
+        public virtual Student Student { get; set; }   // navugation property , referenc type
 
         [ForeignKey("MarkedByUserId")]
         public virtual User MarkedByUser { get; set; }

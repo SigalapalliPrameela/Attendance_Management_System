@@ -29,9 +29,9 @@ namespace Attendance_Management_System.Models
         public bool IsActive { get; set; } = true;
 
         [ForeignKey("DepartmentId")]
-        public virtual Department Department { get; set; }
+        public virtual Department Department { get; set; }    // navigain property reference navigation 
         
-        public virtual ICollection<Attendance> AttendanceRecords { get; set; }
+        public virtual ICollection<Attendance> AttendanceRecords { get; set; }   // navigation property collection navigation (one to many)
 
         public Student()
         {
